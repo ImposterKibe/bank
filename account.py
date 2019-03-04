@@ -1,51 +1,14 @@
+"""
+A class that performs the basic functionality associated with a bank account.
+"""
 class Account(object):
-    """A class that performs the basic functionality associated with a
-    bank account.
-
-    ...
-
-    Attributes
-    ----------
-    LOWER_LIMIT : int
-        an arbitrary figure for the least amount of money an account is
-        allowed to have.
-    account_name : str
-        the name associated with an account.
-    account_id :
-        a six digit integer used to uniquely identify user accounts.
-    account_pin : int
-        a six digit integer used to uniquely identify user accounts.
-    account_balance : int
-        the amount of money currently in the account.
-
-    Methods
-    -------
-    withdraw
-        Withdraws money from the account.
-    deposit
-        Deposits money into the account.
-    print_account_balance
-         the amount of money currently in the account.
-        Displays the amount of money currently in the account.
-    """
-
     LOWER_LIMIT = 1000
-
+    
+    #Constructor
     def __init__(
             self, account_name, account_id, account_pin, account_balance=1000):
-        """
-        Parameters
-        ----------
-        account_name : str
-            The name associated with an account.
-        account_id : int
-            A six digit integer used to uniquely identify user accounts.
-        account_pin : int
-            A six digit integer used to uniquely identify user accounts.
-        account_balance : int
-            The amount of money currently in the account.
-        """
-
+        
+        #Class Attributes 
         self.account_name = account_name
         self.account_id = account_id
         self.account_pin = account_pin
@@ -56,13 +19,11 @@ class Account(object):
     # then pass the value to this function and process the value from there.
     # This function could throw an exception if the withdraw_amount is greater
     # than the account_balance.
+    
+    
     def withdraw(self):
-        """Withdraws money from the account.
-
-        The amount of money that the user wishes to withdraw from the
-        account is deducted from the current account balance.
-        """
-
+        
+        #Withdraws amount from account
         prompt = "Please enter the amount you wish to withdraw: "
         withdraw_amount = int(input(prompt))
         if withdraw_amount > self.account_balance:
@@ -74,7 +35,7 @@ class Account(object):
             if self.account_balance < self.LOWER_LIMIT:
                 print(
                     "Prohibited transaction. Account balances lower than "
-                    f"{self.LOWER_LIMIT} are not allowed. Please try again.")
+                    "{self.LOWER_LIMIT} are not allowed. Please try again.")
                 self.account_balance += withdraw_amount
             else:
                 # self.account_balance -= withdraw_amount
@@ -98,6 +59,6 @@ class Account(object):
         print("Transaction successful. Your new account balance is",
               self.account_balance)
 
-    def print_account_balance(self):
+    def print_account_balance(self):#get_balance
         """Displays the amount of money currently in the account."""
-        print(f"Your current account balance is: {self.account_balance}")
+        print("Your current account balance is: {self.account_balance}")
